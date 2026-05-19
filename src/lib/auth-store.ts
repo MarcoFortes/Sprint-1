@@ -1,4 +1,4 @@
-export type Profile = "Regular" | "Estudiante" | "Senior";
+export type Profile = "Regular" | "Student" | "Senior";
 
 export interface User {
   name: string;
@@ -32,10 +32,10 @@ export function getUsers() {
 export function addUser(u: User): { ok: boolean; error?: string } {
   const users = read();
   if (users.some((x) => x.email.toLowerCase() === u.email.toLowerCase())) {
-    return { ok: false, error: "El correo electrónico ya está registrado." };
+    return { ok: false, error: "This email is already registered." };
   }
   if (users.some((x) => x.nif === u.nif)) {
-    return { ok: false, error: "El NIF ya está registrado." };
+    return { ok: false, error: "This Tax ID (NIF) is already registered." };
   }
   users.push(u);
   write(users);
