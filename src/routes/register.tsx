@@ -7,9 +7,9 @@ export const Route = createFileRoute("/register")({
 });
 
 const PROFILE_DESC: Record<Profile, string> = {
-  Regular: "Tarifa estándar para usuarios generales.",
-  Estudiante: "Descuento del 50% con verificación académica.",
-  Senior: "Descuento del 30% para mayores de 65 años.",
+  Regular: "Standard fare for general users.",
+  Student: "50% discount with academic verification.",
+  Senior: "30% discount for users over 65.",
 };
 
 function RegisterPage() {
@@ -34,7 +34,7 @@ function RegisterPage() {
     setError(null);
     for (const [k, v] of Object.entries(form)) {
       if (!v.trim()) {
-        setError(`El campo "${k}" es obligatorio.`);
+        setError(`The "${k}" field is required.`);
         return;
       }
     }
@@ -43,7 +43,7 @@ function RegisterPage() {
       setError(res.error!);
       return;
     }
-    setSuccess("¡Registro exitoso! Redirigiendo al inicio de sesión...");
+    setSuccess("Registration successful! Redirecting to login...");
     setTimeout(() => navigate({ to: "/login" }), 1500);
   };
 
@@ -54,17 +54,17 @@ function RegisterPage() {
           <div className="inline-block bg-primary text-primary-foreground px-3 py-1 rounded-md font-bold mb-2">
             SDVBO Transcor
           </div>
-          <h1 className="text-2xl font-bold text-secondary">Crear Cuenta</h1>
+          <h1 className="text-2xl font-bold text-secondary">Create Account</h1>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {[
-            { k: "name", l: "Nombre completo *", t: "text" },
-            { k: "phone", l: "Teléfono *", t: "tel" },
-            { k: "idDoc", l: "Documento de Identidad *", t: "text" },
-            { k: "nif", l: "NIF (único) *", t: "text" },
-            { k: "email", l: "Correo electrónico (único) *", t: "email" },
-            { k: "password", l: "Contraseña *", t: "password" },
+            { k: "name", l: "Full Name *", t: "text" },
+            { k: "phone", l: "Phone *", t: "tel" },
+            { k: "idDoc", l: "ID Document *", t: "text" },
+            { k: "nif", l: "Tax ID / NIF (unique) *", t: "text" },
+            { k: "email", l: "Email (unique) *", t: "email" },
+            { k: "password", l: "Password *", t: "password" },
           ].map((f) => (
             <div key={f.k}>
               <label className="block text-sm font-semibold text-secondary mb-1">
@@ -82,10 +82,10 @@ function RegisterPage() {
 
           <div>
             <label className="block text-sm font-semibold text-secondary mb-2">
-              Tipo de perfil
+              Profile type
             </label>
             <div className="grid grid-cols-3 gap-2">
-              {(["Regular", "Estudiante", "Senior"] as Profile[]).map((p) => (
+              {(["Regular", "Student", "Senior"] as Profile[]).map((p) => (
                 <button
                   key={p}
                   type="button"
@@ -101,7 +101,7 @@ function RegisterPage() {
               ))}
             </div>
             <div className="mt-3 p-3 bg-muted rounded-lg border-l-4 border-primary text-sm text-secondary">
-              <strong>Perfil seleccionado: {profile}.</strong>{" "}
+              <strong>Selected profile: {profile}.</strong>{" "}
               {PROFILE_DESC[profile]}
             </div>
           </div>
@@ -110,9 +110,9 @@ function RegisterPage() {
             <div
               className="text-base font-semibold p-3 rounded-lg border-2"
               style={{
-                color: "#DE350B",
-                borderColor: "#DE350B",
-                backgroundColor: "rgba(222,53,11,0.08)",
+                color: "#ee2424",
+                borderColor: "#ee2424",
+                backgroundColor: "rgba(238,36,36,0.08)",
               }}
             >
               {error}
@@ -128,12 +128,12 @@ function RegisterPage() {
             type="submit"
             className="w-full h-14 text-lg font-bold rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-colors"
           >
-            Registrarme
+            Register
           </button>
 
           <div className="text-center text-base">
             <Link to="/login" className="text-secondary hover:underline">
-              ← Volver al inicio de sesión
+              ← Back to login
             </Link>
           </div>
         </form>
