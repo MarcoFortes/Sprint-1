@@ -18,7 +18,7 @@ function RecoveryPage() {
 
   const sendCode = () => {
     if (!email.trim()) {
-      setError("Ingresa tu correo electrónico.");
+      setError("Please enter your email.");
       return;
     }
     setError(null);
@@ -30,7 +30,7 @@ function RecoveryPage() {
       setRestored(true);
       setError(null);
     } else {
-      setError("Código incorrecto. Inténtalo de nuevo.");
+      setError("Incorrect code. Please try again.");
     }
   };
 
@@ -41,14 +41,14 @@ function RecoveryPage() {
           <div className="inline-block bg-primary text-primary-foreground px-3 py-1 rounded-md font-bold mb-2">
             SDVBO Transcor
           </div>
-          <h1 className="text-2xl font-bold text-secondary">Recuperar Cuenta</h1>
+          <h1 className="text-2xl font-bold text-secondary">Account Recovery</h1>
         </div>
 
         {!restored ? (
           <div className="space-y-5">
             <div>
               <label className="block text-base font-semibold text-secondary mb-2">
-                Correo electrónico
+                Email
               </label>
               <input
                 type="email"
@@ -56,7 +56,7 @@ function RecoveryPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={sentCode !== null}
                 className="w-full h-14 px-4 text-lg border-2 rounded-lg focus:outline-none focus:border-primary disabled:bg-muted"
-                placeholder="usuario@correo.com"
+                placeholder="user@email.com"
               />
             </div>
 
@@ -65,7 +65,7 @@ function RecoveryPage() {
                 onClick={sendCode}
                 className="w-full h-14 text-lg font-bold rounded-lg bg-primary text-primary-foreground hover:opacity-90"
               >
-                Enviar Código
+                Send Code
               </button>
             ) : (
               <>
@@ -74,8 +74,8 @@ function RecoveryPage() {
                     🔔 Notification_Service
                   </div>
                   <div className="text-base text-secondary">
-                    Código enviado a <strong>{email}</strong>. Tu código de
-                    verificación es:
+                    Code sent to <strong>{email}</strong>. Your verification
+                    code is:
                   </div>
                   <div className="mt-2 text-3xl font-mono font-bold text-primary tracking-widest text-center">
                     {sentCode}
@@ -84,7 +84,7 @@ function RecoveryPage() {
 
                 <div>
                   <label className="block text-base font-semibold text-secondary mb-2">
-                    Ingresa el código
+                    Enter the code
                   </label>
                   <input
                     type="text"
@@ -99,7 +99,7 @@ function RecoveryPage() {
                   onClick={verify}
                   className="w-full h-14 text-lg font-bold rounded-lg bg-secondary text-secondary-foreground hover:opacity-90"
                 >
-                  Verificar Código
+                  Verify Code
                 </button>
               </>
             )}
@@ -108,9 +108,9 @@ function RecoveryPage() {
               <div
                 className="text-base font-semibold p-3 rounded-lg border-2"
                 style={{
-                  color: "#DE350B",
-                  borderColor: "#DE350B",
-                  backgroundColor: "rgba(222,53,11,0.08)",
+                  color: "#ee2424",
+                  borderColor: "#ee2424",
+                  backgroundColor: "rgba(238,36,36,0.08)",
                 }}
               >
                 {error}
@@ -121,16 +121,16 @@ function RecoveryPage() {
           <div className="text-center py-6 space-y-4">
             <div className="text-6xl">✅</div>
             <div className="text-xl font-bold text-primary p-4 bg-primary/10 rounded-lg border-2 border-primary">
-              ¡Saldo recuperado con éxito!
+              Balance successfully recovered!
             </div>
             <p className="text-secondary">
-              Tu cuenta ha sido restaurada correctamente.
+              Your account has been successfully restored.
             </p>
             <Link
               to="/login"
               className="inline-block w-full h-14 leading-[3.5rem] text-lg font-bold rounded-lg bg-primary text-primary-foreground hover:opacity-90"
             >
-              Ir al inicio de sesión
+              Go to login
             </Link>
           </div>
         )}
@@ -138,7 +138,7 @@ function RecoveryPage() {
         {!restored && (
           <div className="mt-6 text-center">
             <Link to="/login" className="text-secondary hover:underline">
-              ← Volver al inicio de sesión
+              ← Back to login
             </Link>
           </div>
         )}

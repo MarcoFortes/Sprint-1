@@ -27,9 +27,9 @@ function LoginPage() {
       const next = attempts + 1;
       setAttempts(next);
       if (next >= 3) {
-        setError("Acceso bloqueado tras 3 intentos fallidos.");
+        setError("Access blocked after 3 failed attempts.");
       } else {
-        setError(`Credenciales inválidas. Intentos: ${next}/3`);
+        setError(`Invalid credentials. Attempts: ${next}/3`);
       }
     }
   };
@@ -41,13 +41,13 @@ function LoginPage() {
           <div className="inline-block bg-primary text-primary-foreground px-4 py-2 rounded-lg font-bold text-2xl mb-2">
             SDVBO Transcor
           </div>
-          <h1 className="text-2xl font-bold text-secondary mt-4">Iniciar Sesión</h1>
+          <h1 className="text-2xl font-bold text-secondary mt-4">Login</h1>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
             <label className="block text-base font-semibold text-secondary mb-2">
-              Correo electrónico
+              Email
             </label>
             <input
               type="email"
@@ -56,12 +56,12 @@ function LoginPage() {
               required
               disabled={blocked}
               className="w-full h-14 px-4 text-lg border-2 rounded-lg focus:outline-none focus:border-primary disabled:bg-muted"
-              placeholder="usuario@correo.com"
+              placeholder="user@email.com"
             />
           </div>
           <div>
             <label className="block text-base font-semibold text-secondary mb-2">
-              Contraseña
+              Password
             </label>
             <input
               type="password"
@@ -78,9 +78,9 @@ function LoginPage() {
             <div
               className="text-base font-semibold p-3 rounded-lg border-2"
               style={{
-                color: "#DE350B",
-                borderColor: "#DE350B",
-                backgroundColor: "rgba(222,53,11,0.08)",
+                color: "#ee2424",
+                borderColor: "#ee2424",
+                backgroundColor: "rgba(238,36,36,0.08)",
               }}
             >
               {error}
@@ -96,16 +96,16 @@ function LoginPage() {
                 : "bg-primary text-primary-foreground hover:opacity-90"
             }`}
           >
-            {blocked ? "Bloqueado" : "Ingresar"}
+            {blocked ? "Blocked" : "Login"}
           </button>
         </form>
 
         <div className="mt-6 flex flex-col gap-2 text-center text-base">
           <Link to="/register" className="text-primary font-semibold hover:underline">
-            Crear cuenta nueva
+            Create new account
           </Link>
           <Link to="/recovery" className="text-secondary hover:underline">
-            ¿Olvidaste tu contraseña?
+            Forgot your password?
           </Link>
         </div>
       </div>
